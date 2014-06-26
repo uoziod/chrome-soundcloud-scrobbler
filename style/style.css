@@ -39,6 +39,14 @@
 	margin: 8px 0;
 }
 
+.scrobbler-fr {
+	float: right;
+}
+
+.scrobbler-bold {
+	font-weight: bold;
+}
+
 .scrobbler-close {
 	position: fixed;
 	z-index: 99999;
@@ -48,7 +56,7 @@
 	height: 100%;
 }
 
-.scrobbler-container P{
+.scrobbler-container P {
 	margin-bottom: 5px;
 }
 
@@ -87,11 +95,21 @@
 }
 
 .scrobbler-popup A {
-	color: #f50;
+	color: #f50 !important;
 }
 
 .scrobbler-popup A:hover {
 	color: #ffb28c;
+}
+
+.scrobbler-popup A.white {
+	color: #fff !important;
+	text-decoration: underline;
+	opacity: .9;
+}
+
+.scrobbler-popup A.white:hover {
+	opacity: 1;
 }
 
 .scrobbler-button {
@@ -134,7 +152,7 @@
 }
 
 .scrobbler-label {
-	width: 36px;
+	width: 40px;
 	text-align: right;
 	opacity: .6;
 }

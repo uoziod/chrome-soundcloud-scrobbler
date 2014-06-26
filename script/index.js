@@ -36,10 +36,10 @@ scrobbler.tick = function() {
 		}
 
 		// Have we minus or dash in track name? Seems like real artist is there!
-		if (scrobbler.track.match(/-|—/)) {
-			parts = scrobbler.track.split(/-|—/);
+		if (scrobbler.track.match(/\s-\s|\s—\s/)) {
+			parts = scrobbler.track.split(/\s-\s|\s—\s/);
 			scrobbler.artist = parts.shift().trim();
-			scrobbler.track = parts.join('—').trim();
+			scrobbler.track = parts.join(' — ').trim();
 		}
 
 		// Remove "Free Download" text from track name
@@ -78,15 +78,15 @@ scrobbler.tick = function() {
 			// Timeout bar animations
 			var $timeoutBar = $('.scrobbler-timeout-bar'),
 				percentage = scrobbler.playingTime / scrobbler.scrobbleTime;
-			if (percentage < 1) {
+			if (percentage < 1 && localStorage['scrobbler-state'] !== 'paused') {
 				$timeoutBar.stop().fadeIn(500);
-				$('.scrobbler-timeout-finished').stop().animate({width: $timeoutBar.width() * percentage});
+				$('.scrobbler-timeout-finished').stop().animate({width: $timeoutBar.width() * percentage}, 1000);
 			} else {
 				$timeoutBar.stop().fadeOut(500);
 			}
 
 			// Now is the time to submit track!
-			if (scrobbler.playingTime === scrobbler.scrobbleTime) {
+			if (scrobbler.playingTime === scrobbler.scrobbleTime && localStorage['scrobbler-state'] !== 'paused') {
 				scrobbler.askLastFm(
 					{
 						method: 'track.scrobble',
@@ -96,7 +96,7 @@ scrobbler.tick = function() {
 						sk: localStorage['scrobbler-key']
 					},
 					function () {
-						console.log('Chrome Soundcloud Scrobbler. ' + scrobbler.track + ' by ' + scrobbler.artist + ' was submitted to Last.fm for ' + localStorage['scrobbler-name'] + '.');
+						console.log('Chrome SoundCloud Scrobbler. ' + scrobbler.track + ' by ' + scrobbler.artist + ' was submitted to Last.fm for ' + localStorage['scrobbler-name'] + '.');
 					}
 				);
 			}
@@ -135,6 +135,17 @@ $('BODY')
 					if (scrobbler.isPlaying) {
 						$('.scrobbler-nothingPlaying').hide();
 						$('.scrobbler-nowPlaying').show();
+
+						var $scrobblerStatePause = $('.scrobbler-state-pause'),
+							$scrobblerStateResume = $('.scrobbler-state-resume');
+
+						if (localStorage['scrobbler-state'] !== 'paused') {
+							$scrobblerStatePause.show();
+							$scrobblerStateResume.hide();
+						} else {
+							$scrobblerStatePause.hide();
+							$scrobblerStateResume.show();
+						}
 					} else {
 						$('.scrobbler-nothingPlaying').show();
 						$('.scrobbler-nowPlaying').hide();
@@ -159,6 +170,22 @@ $('BODY')
 
 		$('.scrobbler-caller').removeClass('active');
 		$('.scrobbler-container').html('');
+	})
+	.on('click', '.scrobbler-state-pause', function(e) {
+		e.preventDefault();
+
+		localStorage['scrobbler-state'] = 'paused';
+		$('.scrobbler-state-pause').hide();
+		$('.scrobbler-state-resume').show();
+	})
+	.on('click', '.scrobbler-state-resume', function(e) {
+		e.preventDefault();
+
+		scrobbler.playingTime = 1;
+
+		localStorage.removeItem('scrobbler-state');
+		$('.scrobbler-state-pause').show();
+		$('.scrobbler-state-resume').hide();
 	})
 	.on('click', '.scrobbler-logout', function(e) {
 		e.preventDefault();
