@@ -1,0 +1,7 @@
+<a href="#" class="scrobbler-close"></a>
+
+<div class="scrobbler-popup">
+	<div style="padding: 10px 30px">
+		<a href="#" class="scrobbler-button scrobbler-login">Log in with Last.fm</a>
+	</div>
+</div>

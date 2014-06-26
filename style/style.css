@@ -1,0 +1,140 @@
+.scrobbler-caller {
+	position: fixed;
+	z-index: 99999;
+	top: 0;
+	right: 0;
+	width: 65px;
+	height: 46px;
+	background: url('chrome-extension://__MSG_@@extension_id__/image/logo.png') no-repeat center;
+	cursor: pointer;
+	opacity: .3;
+	-webkit-transition: opacity .1s ease-in-out;
+	-moz-transition: opacity .1s ease-in-out;
+	transition: opacity .1s ease-in-out;
+}
+
+.scrobbler-caller:hover,
+.scrobbler-caller.active {
+	opacity: 1;
+}
+
+.scrobbler-timeout-bar {
+	display: none;
+	position: fixed;
+	z-index: 100000;
+	top: 0;
+	right: 0;
+	width: 65px;
+	height: 2px;
+	background: #999;
+}
+
+.scrobbler-timeout-finished {
+	height: 2px;
+	background: #f50;
+}
+
+.scrobbler-hr {
+	border-top: 1px solid rgba(255, 255, 255, .3);
+	margin: 8px 0;
+}
+
+.scrobbler-close {
+	position: fixed;
+	z-index: 99999;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.scrobbler-container P{
+	margin-bottom: 5px;
+}
+
+.scrobbler-container P:last-child {
+	margin-bottom: 0;
+}
+
+.scrobbler-popup:before {
+	content: '';
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 0 8px 8px 8px;
+	border-color: transparent transparent #262727 transparent;
+	position: absolute;
+	top: -8px;
+	right: 17px;
+}
+
+.scrobbler-popup {
+	background: #262727; /* Old browsers */
+	background: -moz-linear-gradient(top,  #262727 0%, #353636 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#262727), color-stop(100%,#353636)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #262727 0%,#353636 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #262727 0%,#353636 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #262727 0%,#353636 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #262727 0%,#353636 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#262727', endColorstr='#353636',GradientType=0 ); /* IE6-9 */
+	padding: 10px 14px;
+	border-radius: 3px;
+	color: #fff;
+	position: fixed;
+	z-index: 100000;
+	top: 58px;
+	right: 8px;
+}
+
+.scrobbler-popup A {
+	color: #f50;
+}
+
+.scrobbler-popup A:hover {
+	color: #ffb28c;
+}
+
+.scrobbler-button {
+	background: #535353; /* Old browsers */
+	background: -moz-linear-gradient(top,  #535353 0%, #282828 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#535353), color-stop(100%,#282828)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #535353 0%,#282828 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #535353 0%,#282828 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #535353 0%,#282828 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #535353 0%,#282828 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#535353', endColorstr='#282828',GradientType=0 ); /* IE6-9 */
+	border: 1px solid #000;
+	border-radius: 3px;
+	color: rgb(204, 204, 204) !important;
+	text-shadow: rgb(0, 0, 0) 0 -1px 0;
+	padding: 5px 10px;
+}
+
+.scrobbler-button:hover {
+	background: #474747; /* Old browsers */
+	background: -moz-linear-gradient(top,  #474747 0%, #1f1f1f 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#474747), color-stop(100%,#1f1f1f)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #474747 0%,#1f1f1f 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #474747 0%,#1f1f1f 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #474747 0%,#1f1f1f 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #474747 0%,#1f1f1f 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#474747', endColorstr='#1f1f1f',GradientType=0 ); /* IE6-9 */
+	color: rgb(204, 204, 204) !important;
+}
+
+.scrobbler-label,
+.scrobbler-artist,
+.scrobbler-track {
+	display: inline-block;
+	max-width: 350px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	vertical-align: middle;
+}
+
+.scrobbler-label {
+	width: 36px;
+	text-align: right;
+	opacity: .6;
+}

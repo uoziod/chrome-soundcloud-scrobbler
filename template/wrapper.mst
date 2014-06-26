@@ -1,0 +1,7 @@
+<a class="scrobbler-caller"></a>
+
+<div class="scrobbler-timeout-bar">
+	<div class="scrobbler-timeout-finished"></div>
+</div>
+
+<div class="scrobbler-container"></div>

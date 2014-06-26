@@ -1,0 +1,22 @@
+<a href="#" class="scrobbler-close"></a>
+
+<div class="scrobbler-popup">
+	<div class="scrobbler-nowPlaying">
+		<p>
+			<span class="scrobbler-label">Artist: </span>
+			<span class="scrobbler-artist">{{artist}}</span>
+		</p>
+		<p>
+			<span class="scrobbler-label">Track:</span>
+			<span class="scrobbler-track">{{track}}</span>
+		</p>
+	</div>
+
+	<div class="scrobbler-nothingPlaying">
+		Nothing is playing
+	</div>
+
+	<div class="scrobbler-hr"></div>
+
+	Hi, {{username}}! <a href="#" class="scrobbler-logout">Logout</a>
+</div>

@@ -1,0 +1,37 @@
+{
+  "name": "SoundCloud Scrobbler",
+  "description": "Chrome Extension that submits to Last.fm playing in SoundCloud music",
+  "version": "1.0",
+  "permissions": [
+    "tabs",
+    "https://soundcloud.com/"
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "content_scripts": [ {
+    "matches": [ "https://soundcloud.com/*" ],
+    "css": [ "style/style.css" ],
+    "js": [
+      "library/jquery.min.js",
+      "library/mustache.js",
+      "library/md5.js",
+      "script/system.js",
+      "script/index.js"
+    ]
+  } ],
+  "web_accessible_resources": [
+    "image/*.png",
+    "style/*.css",
+    "library/*.js",
+    "script/*.js",
+    "template/*.mst"
+  ],
+  "icons": {
+    "16": "icon/16.png",
+    "48": "icon/48.png",
+    "128": "icon/128.png"
+  },
+  "manifest_version": 2
+}
