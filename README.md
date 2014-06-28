@@ -8,5 +8,4 @@ If you have any feature request or want to submit a bug [use this section please
 Planned features
 ----------------
 
--   Change artists and track names before submitting (and possible syncing between accounts)
--   Change timeout between start playing and submitting
+-   Change artist and track name before submitting (and syncing of these data between accounts)
