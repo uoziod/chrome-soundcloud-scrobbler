@@ -36,8 +36,8 @@ scrobbler.tick = function() {
 		}
 
 		// Have we minus or dash in track name? Seems like real artist is there!
-		if (scrobbler.track.match(/\s-\s|\s—\s/)) {
-			parts = scrobbler.track.split(/\s-\s|\s—\s/);
+		if (scrobbler.track.match(/\s-\s|\s—\s|\s–\s/)) {
+			parts = scrobbler.track.split(/\s-\s|\s—\s|\s–\s/);
 			scrobbler.artist = parts.shift().trim();
 			scrobbler.track = parts.join(' — ').trim();
 		}
@@ -80,7 +80,7 @@ scrobbler.tick = function() {
 				percentage = scrobbler.playingTime / scrobbler.scrobbleTime;
 			if (percentage < 1 && localStorage['scrobbler-state'] !== 'paused') {
 				$timeoutBar.stop().fadeIn(500);
-				$('.scrobbler-timeout-finished').stop().animate({width: $timeoutBar.width() * percentage}, 1000);
+				$('.scrobbler-timeout-finished').stop().animate({width: $timeoutBar.width() * percentage}, 1000, 'linear');
 			} else {
 				$timeoutBar.stop().fadeOut(500);
 			}
@@ -187,6 +187,37 @@ $('BODY')
 		$('.scrobbler-state-pause').show();
 		$('.scrobbler-state-resume').hide();
 	})
+	.on('click', '.scrobbler-settings', function(e) {
+		e.preventDefault();
+
+		scrobbler.renderTemplate(
+			'settings',
+			function (rendered) {
+				$('.scrobbler-container').html(rendered);
+
+				$('.scrobbler-settings-timeout').on('change', function() {
+					var newScrobbleTime = parseInt($('.scrobbler-settings-timeout').val(), 10);
+
+					if (newScrobbleTime < 5) {
+						newScrobbleTime = 5;
+					}
+
+					if (newScrobbleTime > 180) {
+						newScrobbleTime = 180;
+					}
+
+					scrobbler.scrobbleTime = newScrobbleTime;
+
+					chrome.storage.sync.set({
+						'scrobbleTime': newScrobbleTime
+					});
+				});
+			},
+			{
+				"timeout": scrobbler.scrobbleTime
+			}
+		);
+	})
 	.on('click', '.scrobbler-logout', function(e) {
 		e.preventDefault();
 
@@ -218,6 +249,14 @@ $(window).ready(function() {
 			}
 		);
 	}
+
+	// Get user preferences (and setting defaults)
+	scrobbler.scrobbleTime = 30;
+	chrome.storage.sync.get('scrobbleTime', function(data) {
+		if (data.scrobbleTime) {
+			scrobbler.scrobbleTime = data.scrobbleTime;
+		}
+	});
 
 	setInterval(scrobbler.tick, 1000);
 

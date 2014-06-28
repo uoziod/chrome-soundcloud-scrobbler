@@ -1,0 +1,9 @@
+<a href="#" class="scrobbler-close"></a>
+
+<div class="scrobbler-popup">
+	<p>
+		Scrobble after
+		<input value="{{timeout}}" class="scrobbler-input scrobbler-center scrobbler-settings-timeout" maxlength="3" />
+		seconds
+	</p>
+</div>

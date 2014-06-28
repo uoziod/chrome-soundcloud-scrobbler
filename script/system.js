@@ -4,8 +4,6 @@
 
 var scrobbler = {
 
-	scrobbleTime: 30,
-
 	key: '999941637ac7d69b1eb671ce8cdfe447',
 	secret: '06bfde10a535f5a9ad875d7ae150f44a',
 

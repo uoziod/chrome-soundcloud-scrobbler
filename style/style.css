@@ -34,6 +34,10 @@
 	background: #f50;
 }
 
+.scrobbler-noWrap {
+	white-space: nowrap;
+}
+
 .scrobbler-hr {
 	border-top: 1px solid rgba(255, 255, 255, .3);
 	margin: 8px 0;
@@ -45,6 +49,10 @@
 
 .scrobbler-bold {
 	font-weight: bold;
+}
+
+.scrobbler-center {
+	text-align: center;
 }
 
 .scrobbler-close {
@@ -86,7 +94,7 @@
 	background: linear-gradient(to bottom,  #262727 0%,#353636 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#262727', endColorstr='#353636',GradientType=0 ); /* IE6-9 */
 	padding: 10px 14px;
-	border-radius: 3px;
+	border-radius: 5px;
 	color: #fff;
 	position: fixed;
 	z-index: 100000;
@@ -110,6 +118,16 @@
 
 .scrobbler-popup A.white:hover {
 	opacity: 1;
+}
+
+.scrobbler-popup A.grey {
+	color: #fff !important;
+	text-decoration: underline;
+	opacity: .6;
+}
+
+.scrobbler-popup A.grey:hover {
+	opacity: .8;
 }
 
 .scrobbler-button {
@@ -140,9 +158,12 @@
 	color: rgb(204, 204, 204) !important;
 }
 
+.scrobbler-input {
+	width: 30px;
+}
+
 .scrobbler-label,
-.scrobbler-artist,
-.scrobbler-track {
+.scrobbler-value {
 	display: inline-block;
 	max-width: 350px;
 	overflow: hidden;

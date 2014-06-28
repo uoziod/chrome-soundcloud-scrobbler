@@ -4,11 +4,11 @@
 	<div class="scrobbler-nowPlaying">
 		<p>
 			<span class="scrobbler-label">Artist:&nbsp;</span>
-			<span class="scrobbler-artist">{{artist}}</span>
+			<span class="scrobbler-value">{{artist}}</span>
 		</p>
 		<p>
 			<span class="scrobbler-label">Track:&nbsp;</span>
-			<span class="scrobbler-track">{{track}}</span>
+			<span class="scrobbler-value">{{track}}</span>
 		</p>
 	</div>
 
@@ -23,6 +23,9 @@
 		<a href="#" class="scrobbler-state-resume scrobbler-bold" title="Scrobbling is paused. Click to resume scrobbling">resume</a>
 	</div>
 
-	Hi, <a target="_blank" class="white" href="http://www.last.fm/user/{{username}}">{{username}}</a>!
-	<a href="#" class="scrobbler-logout white">Logout</a>
+	<div class="scrobbler-noWrap" style="padding-right: 80px">
+		Hi, <a target="_blank" class="white" href="http://www.last.fm/user/{{username}}">{{username}}</a>!
+		<a href="#" class="scrobbler-settings grey">Settings</a> |
+		<a href="#" class="scrobbler-logout grey">Logout</a>
+	</div>
 </div>
