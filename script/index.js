@@ -18,7 +18,7 @@ scrobbler.renderTemplate(
 scrobbler.tick = function() {
 
 	// Get playing state
-	scrobbler.isPlaying = $('.playControls__playPauseSkip .playControl').hasClass('playing');
+	scrobbler.isPlaying = $('header.header').hasClass('playing');
 
 	if (scrobbler.isPlaying) {
 

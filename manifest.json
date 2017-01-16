@@ -1,7 +1,7 @@
 {
   "name": "SoundCloud Scrobbler",
   "description": "Chrome Extension that submits to Last.fm (scrobble) music you play on SoundCloud",
-  "version": "1.2",
+  "version": "1.2.1",
   "permissions": [
     "tabs",
     "storage",
